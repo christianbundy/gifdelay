@@ -13,7 +13,7 @@ if [ ! -z $1 ]; then
 			let "frame_time += $frame"
 		done <<< "$frames"
 		rate=$(echo "$frame_count / ($frame_time)*100" |bc -l)
-		printf "%.1f fps\n" "$rate"
+		printf "%.1f\n" "$rate"
 	else
 		echo 'Input file "'$input'" does not exist';
 	fi

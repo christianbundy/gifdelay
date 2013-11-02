@@ -1,4 +1,4 @@
-# gif2mp4
+# gifdelay
 
 Finding the average delay between GIF frames should be quick and easy.
 
