@@ -1,0 +1,25 @@
+#!/bin/bash
+set -e
+
+input=$1
+
+if [ ! -z $1 ]; then
+	if [ -f './'$input ]; then
+		frames=`identify -format "%T\n" $input`
+		count=0;
+		delay=0;
+		while read frame; do
+			let "frame_count += 1"
+			let "frame_time += $frame"
+		done <<< "$frames"
+		rate=$(echo "$frame_count / ($frame_time)*100" |bc -l)
+		printf "%.1f fps\n" "$rate"
+	else
+		echo 'Input file "'$input'" does not exist';
+	fi
+else
+	cat <<usage
+Usage:   gifdelay input
+Example: gif2mp4 cat.gif
+usage
+fi
